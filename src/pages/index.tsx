@@ -7,11 +7,7 @@ import { search, unique } from "../lib/search"
 import styles from "./index.module.css"
 import youTube from "../components/youtube.png"
 
-const UPDATES = [
-  "2023/05/23 - Deploy different contracts at same address",
-  "2023/05/14 - GitHub PR Drblessing",
-  "2023/05/02 - GitHub PR Drblessing",
-]
+
 
 interface Translation {
   lang: string
@@ -33,53 +29,53 @@ interface Route {
 const SOL_ROUTES: Route[] = [
   {
     path: "hello-world",
-    title: "Hello World",
+    title: "Merhaba Dünya",
   },
   {
     path: "first-app",
-    title: "First App",
+    title: "Örnek Uygulama",
   },
   {
     path: "primitives",
-    title: "Primitive Data Types",
+    title: "Veri Türleri",
   },
   {
     path: "variables",
-    title: "Variables",
+    title: "Değişkenler",
   },
   {
     path: "constants",
-    title: "Constants",
+    title: "Sabitler",
   },
   {
     path: "immutable",
-    title: "Immutable",
+    title: "Değişmezler",
   },
   {
     path: "state-variables",
-    title: "Reading and Writing to a State Variable",
+    title: "Durum Değişkenini Okuma ve Yazma",
   },
   {
     path: "ether-units",
-    title: "Ether and Wei",
+    title: "Ether ve Wei",
   },
   {
     path: "gas",
-    title: "Gas and Gas Price",
+    title: "Gas ve Gas Ücreti",
   },
   // Flow control
   {
     path: "if-else",
-    title: "If / Else",
+    title: "Koşul İfadeleri - If / Else",
   },
   {
     path: "loop",
-    title: "For and While Loop",
+    title: "For ve While Döngüleri",
   },
   // collection data types
   {
     path: "mapping",
-    title: "Mapping",
+    title: "Mapping İşlemi",
   },
   {
     path: "array",
@@ -223,225 +219,7 @@ const SOL_ROUTES: Route[] = [
   },
 ]
 
-const APP_ROUTES: Route[] = [
-  {
-    path: "ether-wallet",
-    title: "Ether Wallet",
-  },
-  {
-    path: "multi-sig-wallet",
-    title: "Multi Sig Wallet",
-  },
-  {
-    path: "merkle-tree",
-    title: "Merkle Tree",
-  },
-  {
-    path: "iterable-mapping",
-    title: "Iterable Mapping",
-  },
-  {
-    path: "erc20",
-    title: "ERC20",
-  },
-  {
-    path: "erc721",
-    title: "ERC721",
-  },
-  {
-    path: "gasless-token-transfer",
-    title: "Gasless Token Transfer",
-  },
-  {
-    path: "simple-bytecode-contract",
-    title: "Simple Bytecode Contract",
-  },
-  {
-    path: "create2",
-    title: "Precompute Contract Address with Create2",
-  },
-  {
-    path: "minimal-proxy",
-    title: "Minimal Proxy Contract",
-  },
-  {
-    path: "upgradeable-proxy",
-    title: "Upgradeable Proxy",
-  },
-  {
-    path: "deploy-any-contract",
-    title: "Deploy Any Contract",
-  },
-  {
-    path: "write-to-any-slot",
-    title: "Write to Any Slot",
-  },
-  {
-    path: "uni-directional-payment-channel",
-    title: "Uni-directional Payment Channel",
-  },
-  {
-    path: "bi-directional-payment-channel",
-    title: "Bi-directional Payment Channel",
-  },
-  {
-    path: "english-auction",
-    title: "English Auction",
-  },
-  {
-    path: "dutch-auction",
-    title: "Dutch Auction",
-  },
-  {
-    path: "crowd-fund",
-    title: "Crowd Fund",
-  },
-  {
-    path: "multi-call",
-    title: "Multi Call",
-  },
-  {
-    path: "multi-delegatecall",
-    title: "Multi Delegatecall",
-  },
-  {
-    path: "time-lock",
-    title: "Time Lock",
-  },
-]
 
-const HACK_ROUTES: Route[] = [
-  {
-    path: "re-entrancy",
-    title: "Re-Entrancy",
-  },
-  {
-    path: "overflow",
-    title: "Arithmetic Overflow and Underflow",
-  },
-  {
-    path: "self-destruct",
-    title: "Self Destruct",
-  },
-  {
-    path: "accessing-private-data",
-    title: "Accessing Private Data",
-  },
-  {
-    path: "delegatecall",
-    title: "Delegatecall",
-  },
-  {
-    path: "randomness",
-    title: "Source of Randomness",
-  },
-  {
-    path: "denial-of-service",
-    title: "Denial of Service",
-  },
-  {
-    path: "phishing-with-tx-origin",
-    title: "Phishing with tx.origin",
-  },
-  {
-    path: "hiding-malicious-code-with-external-contract",
-    title: "Hiding Malicious Code with External Contract",
-  },
-  {
-    path: "honeypot",
-    title: "Honeypot",
-  },
-  {
-    path: "front-running",
-    title: "Front Running",
-  },
-  {
-    path: "block-timestamp-manipulation",
-    title: "Block Timestamp Manipulation",
-  },
-  {
-    path: "signature-replay",
-    title: "Signature Replay",
-  },
-  {
-    path: "contract-size",
-    title: "Bypass Contract Size Check",
-  },
-  {
-    path: "deploy-different-contracts-same-address",
-    title: "Deploy Different Contracts at Same Address",
-  },
-]
-
-const TEST_ROUTES: Route[] = [
-  {
-    path: "echidna",
-    title: "Echidna",
-  },
-]
-
-const DEFI_ROUTES = [
-  {
-    path: "uniswap-v2",
-    title: "Uniswap V2 Swap",
-  },
-  {
-    path: "uniswap-v2-add-remove-liquidity",
-    title: "Uniswap V2 Add Remove Liquidity",
-  },
-  {
-    path: "uniswap-v2-optimal-one-sided-supply",
-    title: "Uniswap V2 Optimal One Sided Supply",
-  },
-  {
-    path: "uniswap-v2-flash-swap",
-    title: "Uniswap V2 Flash Swap",
-  },
-  {
-    path: "uniswap-v3-swap",
-    title: "Uniswap V3 Swap",
-  },
-  {
-    path: "uniswap-v3-liquidity",
-    title: "Uniswap V3 Liquidity",
-  },
-  {
-    path: "uniswap-v3-flash",
-    title: "Uniswap V3 Flash Loan",
-  },
-  {
-    path: "uniswap-v3-flash-swap",
-    title: "Uniswap V3 Flash Swap Arbitrage",
-  },
-  {
-    path: "chainlink-price-oracle",
-    title: "Chainlink Price Oracle",
-  },
-  {
-    path: "staking-rewards",
-    title: "Staking Rewards",
-  },
-  {
-    path: "discrete-staking-rewards",
-    title: "Discrete Staking Rewards",
-  },
-  {
-    path: "vault",
-    title: "Vault",
-  },
-  {
-    path: "constant-sum-amm",
-    title: "Constant Sum AMM",
-  },
-  {
-    path: "constant-product-amm",
-    title: "Constant Product AMM",
-  },
-  {
-    path: "stable-swap-amm",
-    title: "Stable Swap AMM",
-  },
-]
 
 export const ROUTES_BY_CATEGORY = [
   {
@@ -449,34 +227,6 @@ export const ROUTES_BY_CATEGORY = [
     routes: SOL_ROUTES.map((route) => ({
       ...route,
       path: `/${route.path}`,
-    })),
-  },
-  {
-    title: "Applications",
-    routes: APP_ROUTES.map((route) => ({
-      ...route,
-      path: `/app/${route.path}`,
-    })),
-  },
-  {
-    title: "Hacks",
-    routes: HACK_ROUTES.map((route) => ({
-      ...route,
-      path: `/hacks/${route.path}`,
-    })),
-  },
-  {
-    title: "Tests",
-    routes: TEST_ROUTES.map((route) => ({
-      ...route,
-      path: `/tests/${route.path}`,
-    })),
-  },
-  {
-    title: "DeFi",
-    routes: DEFI_ROUTES.map((route) => ({
-      ...route,
-      path: `/defi/${route.path}`,
     })),
   },
 ]
@@ -604,17 +354,16 @@ export default function HomePage() {
   return (
     <div className={styles.component}>
       <SEO
-        title="Solidity by Example | 0.8.17"
+        title="Solidity Rehberi | 0.8.17"
         description="Learn smart contract programming using Solidity"
       />
       <h1 className={styles.header}>
-        <a href="/">Solidity by Example</a>
+        <a href="/">Solidity Rehberi</a>
       </h1>
       <div className={styles.subHeader}>v 0.8.17</div>
       <div className={styles.main}>
         <p>
-          an introduction to <a href="https://solidity.readthedocs.io">Solidity</a> with
-          simple examples
+        Basit örneklerle <a href="https://solidity.readthedocs.io">Solidity</a>'ye giriş.
         </p>
 
         <div className={styles.youTube}>
@@ -627,11 +376,7 @@ export default function HomePage() {
           </a>
         </div>
 
-        <div className={styles.updates}>
-          {UPDATES.map((text, i) => (
-            <div key={i}>{text}</div>
-          ))}
-        </div>
+
 
         <div className={styles.search}>
           <SearchBar value={query} onChange={onChangeSearchQuery} />

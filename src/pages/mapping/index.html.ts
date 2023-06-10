@@ -9,50 +9,54 @@ export const codes = [
   },
 ]
 
-const html = `<p>Maps are created with the syntax <code>mapping(keyType =&gt; valueType)</code>.</p>
-<p>The <code>keyType</code> can be any built-in value type, bytes, string, or any contract.</p>
-<p><code>valueType</code> can be any type including another mapping or an array.</p>
-<p>Mappings are not iterable.</p>
+const html = `<p>Mapping işlemi, <code>mapping(keyType => valueType)</code> sözdizimiyle oluşturulur. Bir anahtara karşılık tutulan değeri saklar , birden fazla anahtar olabilir. Örnek kullanım senaryosu olarak adreslere ait bakiyeler bu şekilde saklanabilir.</p>
+
+<p><code>keyType</code>, herhangi bir yerleşik değer tipi, baytlar, dize veya herhangi bir sözleşme olabilir.</p>
+<p><code>valueType</code>, başka bir Mapp işlemi veya dizi de dahil olmak üzere herhangi bir tür olabilir.</p>
+<p>Mapping yinelemeye tabi değildir.</p>
 <pre><code class="language-solidity"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 <span class="hljs-meta"><span class="hljs-keyword">pragma</span> <span class="hljs-keyword">solidity</span> ^0.8.17;</span>
-
 <span class="hljs-class"><span class="hljs-keyword">contract</span> <span class="hljs-title">Mapping</span> </span>{
-    <span class="hljs-comment">// Mapping from address to uint</span>
-    <span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">address</span> <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">uint</span>) <span class="hljs-keyword">public</span> myMap;
+<span class="hljs-comment">// Adresten uint'a Mapp işlemi</span>
+<span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">address</span> => <span class="hljs-keyword">uint</span>) <span class="hljs-keyword">public</span> myMap;
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint</span></span>) </span>{
-        <span class="hljs-comment">// Mapping always returns a value.</span>
-        <span class="hljs-comment">// If the value was never set, it will return the default value.</span>
-        <span class="hljs-keyword">return</span> myMap[_addr];
-    }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">oku</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint</span></span>) </span>{
+    
+    <span class="hljs-comment">// Mapp işlemi her zaman bir değer döndürür.</span>
+    <span class="hljs-comment">// Değer ayarlanmamışsa, varsayılan değeri döndürür.</span>
+    <span class="hljs-keyword">return</span> myMap[_addr];
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
-        <span class="hljs-comment">// Update the value at this address</span>
-        myMap[_addr] <span class="hljs-operator">=</span> _i;
-    }
+}
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
-        <span class="hljs-comment">// Reset the value to the default value.</span>
-        <span class="hljs-keyword">delete</span> myMap[_addr];
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ayarla</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
+    <span class="hljs-comment">// Bu adresteki değeri güncelle</span>
+    myMap[_addr] = _i;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sil</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
+    <span class="hljs-comment">// Değeri varsayılan değere sıfırla</span>
+    <span class="hljs-keyword">delete</span> myMap[_addr];
     }
 }
 
-<span class="hljs-class"><span class="hljs-keyword">contract</span> <span class="hljs-title">NestedMapping</span> </span>{
-    <span class="hljs-comment">// Nested mapping (mapping from address to another mapping)</span>
-    <span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">address</span> <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">uint</span> <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">bool</span>)) <span class="hljs-keyword">public</span> nested;
+<span class="hljs-class"><span class="hljs-keyword">contract</span> <span class="hljs-title">CokluMapp</span> </span>{
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">bool</span></span>) </span>{
-        <span class="hljs-comment">// You can get values from a nested mapping</span>
-        <span class="hljs-comment">// even when it is not initialized</span>
-        <span class="hljs-keyword">return</span> nested[_addr1][_i];
-    }
+<span class="hljs-comment">// Çoklu Mapp işlemi (adresten başka bir Mapp işlemiya)</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i, <span class="hljs-keyword">bool</span> _boo</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
-        nested[_addr1][_i] <span class="hljs-operator">=</span> _boo;
-    }
+<span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">address</span> => <span class="hljs-keyword">mapping</span>(<span class="hljs-keyword">uint</span> => <span class="hljs-keyword">bool</span>)) <span class="hljs-keyword">public</span> nested;
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
-        <span class="hljs-keyword">delete</span> nested[_addr1][_i];
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">al</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">bool</span></span>) </span>{
+    <span class="hljs-comment">// İlgili Mapp işlemidan değerleri alabilirsiniz</span>
+    <span class="hljs-comment">// Başlatılmamış olsa bile</span>
+    <span class="hljs-keyword">return</span> nested[_addr1][_i];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ayarla</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i, <span class="hljs-keyword">bool</span> _boo</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
+    nested[_addr1][_i] = _boo;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sil</span>(<span class="hljs-params"><span class="hljs-keyword">address</span> _addr1, <span class="hljs-keyword">uint</span> _i</span>) <span class="hljs-title"><span class="hljs-keyword">public</span></span> </span>{
+    <span class="hljs-keyword">delete</span> nested[_addr1][_i];
     }
 }
 </code></pre>

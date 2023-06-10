@@ -24,7 +24,7 @@ function Header() {
       </a>
 
       <h3 className={styles.header}>
-        <a href="/">Solidity by Example</a>
+        <a href="/">Solidity Rehberi</a>
       </h3>
 
       <button className={styles.mode} onClick={onClickTheme}>

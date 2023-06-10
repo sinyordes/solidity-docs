@@ -35,7 +35,7 @@ const Example: React.FC<Props> = ({
   return (
     <div className={styles.component}>
       <SEO
-        title={`${title} | Solidity by Example | ${version}`}
+        title={`${title} | Solidity Rehberi | ${version}`}
         description={description}
       />
       <div className={styles.content}>

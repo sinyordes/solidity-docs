@@ -1,7 +1,7 @@
 // metadata
 export const version = "0.8.17"
-export const title = "Immutable"
-export const description = "Immutable variables"
+export const title = "Değişmezler"
+export const description = "Değişmezler"
 export const codes = [
   {
     fileName: "Immutable.sol",
@@ -9,18 +9,24 @@ export const codes = [
   },
 ]
 
-const html = `<p>Immutable variables are like constants. Values of immutable variables can be set inside the constructor but cannot be modified afterwards.</p>
+const html = `<p>Değişmez değişkenler sabitler gibidir. Değişmez değişkenlerin değerleri sözleşmeyi ağda yayınlarken ayarlanabilir ancak daha sonra değiştirilemez.</p>
 <pre><code class="language-solidity"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 <span class="hljs-meta"><span class="hljs-keyword">pragma</span> <span class="hljs-keyword">solidity</span> ^0.8.17;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">contract</span> <span class="hljs-title">Immutable</span> </span>{
-    <span class="hljs-comment">// coding convention to uppercase constant variables</span>
-    <span class="hljs-keyword">address</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">immutable</span> MY_ADDRESS;
-    <span class="hljs-keyword">uint</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">immutable</span> MY_UINT;
+<span class="hljs-class"><span class="hljs-keyword">contract</span> <span class="hljs-title">Degismezler</span> </span>{
+    <span class="hljs-comment">// sabit değişkenleri büyük harfe kodlama kuralı</span>
+    <span class="hljs-keyword">address</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">immutable</span> cuzdanAdresi;
+    <span class="hljs-keyword">uint</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">immutable</span> sayi;
 
-    <span class="hljs-function"><span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">uint</span> _myUint</span>) </span>{
-        MY_ADDRESS <span class="hljs-operator">=</span> <span class="hljs-built_in">msg</span>.<span class="hljs-built_in">sender</span>;
-        MY_UINT <span class="hljs-operator">=</span> _myUint;
+    <span class="hljs-comment">// constructor içerisindeki değerler sözleşme yayınlanırken tanımlanır. </span>
+    <span class="hljs-comment">/* Bu örnekte _sayi değeri manuel girilecek ancak cuzdanAdresi değişkenine sözleşmeyi ağda </span>
+    <span class="hljs-comment">yayınlayan adres (msg.sender) otomatik olarak tanımlanacak.*/</span>
+    <span class="hljs-function"><span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">uint</span> _sayi</span>) </span>{
+        <span class="hljs-comment">/* constructor(uint _sayi) ifadesi aşağıda sayi değişkenine tanımlanan </span>
+        <span class="hljs-comment">_sayi parametresini sözleşme ağda yayınlanırken belirlememizi sağlar. */ </span>
+
+        cuzdanAdresi <span class="hljs-operator">=</span> <span class="hljs-built_in">msg</span>.<span class="hljs-built_in">sender</span>;
+        sayi <span class="hljs-operator">=</span> _sayi;
     }
 }
 </code></pre>
